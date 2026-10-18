@@ -3,26 +3,41 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/FirstFragment">
+    app:startDestination="@id/dashboardFragment">
 
     <fragment
-        android:id="@+id/FirstFragment"
-        android:name="com.example.tenantmanagementsystem.FirstFragment"
-        android:label="@string/first_fragment_label"
-        tools:layout="@layout/fragment_first">
-
+        android:id="@+id/dashboardFragment"
+        android:name="com.example.tenantmanagementsystem.DashboardFragment"
+        android:label="Dashboard"
+        tools:layout="@layout/fragment_dashboard">
         <action
-            android:id="@+id/action_FirstFragment_to_SecondFragment"
-            app:destination="@id/SecondFragment" />
+            android:id="@+id/action_dashboardFragment_to_addTenantFragment"
+            app:destination="@id/addTenantFragment" />
+        <action
+            android:id="@+id/action_dashboardFragment_to_viewTenantsFragment"
+            app:destination="@id/viewTenantsFragment" />
     </fragment>
-    <fragment
-        android:id="@+id/SecondFragment"
-        android:name="com.example.tenantmanagementsystem.SecondFragment"
-        android:label="@string/second_fragment_label"
-        tools:layout="@layout/fragment_second">
 
+    <fragment
+        android:id="@+id/addTenantFragment"
+        android:name="com.example.tenantmanagementsystem.AddTenantFragment"
+        android:label="Add Tenant"
+        tools:layout="@layout/fragment_add_tenant">
         <action
-            android:id="@+id/action_SecondFragment_to_FirstFragment"
-            app:destination="@id/FirstFragment" />
+            android:id="@+id/action_addTenantFragment_to_viewTenantsFragment"
+            app:destination="@id/viewTenantsFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/viewTenantsFragment"
+        android:name="com.example.tenantmanagementsystem.ViewTenantsFragment"
+        android:label="View Tenants"
+        tools:layout="@layout/fragment_view_tenants">
+
+        <argument
+            android:name="newTenant"
+            app:argType="com.example.tenantmanagementsystem.Tenant"
+            app:nullable="true"
+            android:defaultValue="@null" />
     </fragment>
 </navigation>

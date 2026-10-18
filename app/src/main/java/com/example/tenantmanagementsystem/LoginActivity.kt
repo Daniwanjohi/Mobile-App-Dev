@@ -6,10 +6,13 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.tenantmanagementsystem.databinding.ActivityLoginBinding
 import android.net.Uri
+import android.util.Log
 class LoginActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        Log.d("TENANT_LIFECYCLE", "LoginActivity: onCreatE")
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
         val registeredEmail = intent.getStringExtra("EMAIL")
@@ -40,6 +43,36 @@ class LoginActivity : AppCompatActivity() {
             val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://www.strathmore.edu"))
             startActivity(intent)
         }
+    }
 
+    // ----- Task 1: Lifecycle Methods -----
+    override fun onStart() {
+        super.onStart()
+        Log.d("TENANT_LIFECYCLE", "LoginActivity: onStart")
+    }
+
+    override fun onResume() {
+        super.onResume()
+        Log.d("TENANT_LIFECYCLE", "LoginActivity: onResume")
+    }
+
+    override fun onPause() {
+        super.onPause()
+        Log.d("TENANT_LIFECYCLE", "LoginActivity: onPause")
+    }
+
+    override fun onStop() {
+        super.onStop()
+        Log.d("TENANT_LIFECYCLE", "LoginActivity: onStop")
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        Log.d("TENANT_LIFECYCLE", "LoginActivity: onDestroy")
+    }
+
+    override fun onRestart() {
+        super.onRestart()
+        Log.d("TENANT_LIFECYCLE", "LoginActivity: onRestart")
     }
 }
